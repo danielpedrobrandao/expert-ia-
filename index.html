@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Cell | Portfólio IA & Dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Syne:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --bg: #030303; 
+            --accent-b: #0071e3; 
+            --accent-p: #ff00ff; 
+            --text: #ffffff; 
+            --glass: rgba(255, 255, 255, 0.05); 
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .page-wrapper { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 40px 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center; 
+        }
+
+        .mip-logo { 
+            font-family: 'Syne', sans-serif; 
+            font-weight: 700; 
+            font-size: 2.2rem; 
+            background: linear-gradient(90deg, #ff00ff, #0071e3); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            margin-bottom: 10px;
+        }
+
+        h1 { font-family: 'Syne', sans-serif; font-size: 2.5rem; letter-spacing: -2px; margin-bottom: 30px; }
+        h1 span { color: #ff00ff; }
+
+        /* Layout Principal Lateral */
+        .main-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            width: 100%;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        /* Colunas de Benefícios */
+        .benefits-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 300px;
+        }
+
+        .benefit-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+            text-align: left;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-p);
+        }
+
+        .benefit-card strong { color: var(--accent-p); display: block; margin-bottom: 8px; font-size: 1rem;}
+
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        /* Chamada Superior */
+        .portfolio-callout-minimal {
+            background: linear-gradient(135deg, var(--accent-b), var(--accent-p));
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            box-shadow: 0 10px 25px rgba(255, 0, 255, 0.15);
+            margin-bottom: 20px;
+        }
+
+        /* Seção Central do Chat */
+        .chat-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chat-container { 
+            width: 320px; height: 550px; 
+            background: #121214; 
+            border-radius: 40px; 
+            border: 8px solid #222; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8); 
+            display: flex; flex-direction: column; 
+            overflow: hidden; 
+            position: relative; 
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .chat-header { padding: 40px 15px 10px; border-bottom: 1px solid var(--glass); }
+        .chat-header p { font-size: 0.7rem; color: #30d158; font-weight: 700; }
+
+        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .message { max-width: 85%; padding: 10px 14px; border-radius: 15px; font-size: 0.85rem; line-height: 1.4; text-align: left; }
+        .bot { background: var(--glass); align-self: flex-start; color: #eee; }
+        .user { background: var(--accent-b); align-self: flex-end; color: #fff; }
+
+        .chat-input-area { padding: 15px; background: #18181b; display: flex; gap: 10px; align-items: center; }
+        input { flex: 1; background: var(--glass); border: none; color: white; outline: none; padding: 10px 15px; border-radius: 20px; font-size: 0.9rem; }
+        button { background: var(--accent-b); border: none; width: 40px; height: 40px; border-radius: 50%; color: white; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+
+        /* Botão WhatsApp Pulsante */
+        .wa-btn {
+            display: inline-block;
+            margin-top: 30px;
+            background: #25d366;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 35px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            transition: transform 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .wa-btn:hover { transform: scale(1.1); }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <div class="mip-logo">EXPERT CELL</div>
+        <h1>IPHONE: <span>FÓRMULA EXPERT</span></h1>
+        
+        <div class="portfolio-callout-minimal">
+            POR QUE TER UM CHAT DE IA NO SEU NEGÓCIO? 💡
+        </div>
+
+        <div class="main-layout">
+            
+            <div class="benefits-column">
+                <div class="benefit-card" style="animation-delay: 0.1s;">
+                    <strong>Atendimento 24/7</strong> IA nunca dorme. Respostas instantâneas a qualquer hora para os clientes de Joinville.
+                </div>
+                <div class="benefit-card" style="animation-delay: 0.3s;">
+                    <strong>Triagem Técnica</strong> Identifica problemas de hardware antes mesmo do aparelho chegar na loja.
+                </div>
+            </div>
+
+            <div class="chat-section">
+                <div class="chat-container">
+                    <header class="chat-header">
+                        <h2>Suporte Expert Cell</h2>
+                        <p>● Online agora em Joinville</p>
+                    </header>
+                    <main id="chat-box" class="chat-messages">
+                        <div class="message bot">Olá! Sou a IA da Expert Cell. Como posso ajudar com seu iPhone hoje?</div>
+                    </main>
+                    <footer class="chat-input-area">
+                        <input type="text" id="user-input" placeholder="Dúvida técnica..." autocomplete="off">
+                        <button id="send-btn">↑</button>
+                    </footer>
+                </div>
+                
+                <a href="https://wa.me/5547984718394" target="_blank" class="wa-btn">
+                    AGENDAR REPARO NO WHATSAPP
+                </a>
+            </div>
+
+            <div class="benefits-column">
+                <div class="benefit-card" style="animation-delay: 0.2s;">
+                    <strong>Venda Consultiva</strong> Sugere o iPhone ideal baseado no perfil técnico e orçamento do cliente.
+                </div>
+                <div class="benefit-card" style="animation-delay: 0.4s;">
+                    <strong>Escalabilidade</strong> Atenda dezenas de pessoas ao mesmo tempo sem perder a qualidade do suporte.
+                </div>
+                <div class="benefit-card" style="animation-delay: 0.5s;">
+                    <strong>Redução de Custos</strong> Automatiza dúvidas repetitivas, focando a equipe no que importa: o reparo.
+                </div>
+            </div>
+
+        </div> 
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+
+        const API_KEY = "yjWfl3KXsGwPAsWl5PMo8uYVDyqW2vl7"; 
+        const URL = "https://api.mistral.ai/v1/chat/completions";
+
+        async function getIAHandler(message) {
+            try {
+                const response = await fetch(URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: "mistral-tiny",
+                        messages: [
+                            { 
+                                role: "system", 
+                                content: "Você é o especialista da Expert Cell em Joinville, Rua Guanabara 2397. Especialista em iPhones. Responda de forma curta, técnica e simpática." 
+                            },
+                            { role: "user", content: message }
+                        ]
+                    })
+                });
+
+                const data = await response.json();
+                return data.choices[0].message.content;
+            } catch (e) {
+                return "Erro de conexão. Me chama no Whats!";
+            }
+        }
+
+        function addMessage(text, type) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message', type);
+            msgDiv.innerText = text;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return msgDiv;
+        }
+
+        async function handleChat() {
+            const text = userInput.value.trim();
+            if (!text) return;
+            
+            addMessage(text, 'user');
+            userInput.value = '';
+            
+            const typingMsg = addMessage("...", 'bot');
+            const resposta = await getIAHandler(text);
+            typingMsg.innerText = resposta;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        sendBtn.addEventListener('click', handleChat);
+        userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleChat(); });
+    </script>
+</body>
+</html>
